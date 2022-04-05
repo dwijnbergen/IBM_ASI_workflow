@@ -10,10 +10,11 @@
 #' @export
 #'
 #' @examples
-import_stringdb <- function(infile, outfile, n_max = Inf, min_weight = 1){
+import_stringdb <- function(infile, n_max = Inf, min_weight = 1){
   # Change delimited to tab, select identifiers and experimental score, remove prefix from identifiers and change column names
   #  | sed "s/9606\\.//g" can be used to remove NCBI taxid prefix
   awkcode <- paste0("'{if($7 >= ",min_weight ,"){print($0)}}'")
+  outfile <- "stringdb_edges"
 
   if (n_max == Inf){
     system(paste('zcat',infile ,'| tr " " "\t" | awk', awkcode, '| cut -f 1,2,7 | sed "1 s/protein/Ensembl ID /g" | sed "1 s/experimental/Weight/" >', outfile))
@@ -23,4 +24,4 @@ import_stringdb <- function(infile, outfile, n_max = Inf, min_weight = 1){
 }
 
 args = commandArgs(trailingOnly=TRUE)
-import_stringdb(args[1], args[2])
+import_stringdb(args[1])

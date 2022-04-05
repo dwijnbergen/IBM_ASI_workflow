@@ -16,12 +16,6 @@ mirtarbase_input_file:
   class: File
   path: /home/dwijnbergen/ASI_workflow_data/input/hsa_MTI.xlsx
 
-# Intermediate files
-stringdb_edgelist: /home/dwijnbergen/ASI_workflow_data/intermediate/stringdb_edges
-mirtarbase_edgelist: /home/dwijnbergen/ASI_workflow_data/intermediate/mirtarbase_edges
-
-# Output files
-
 # Parameters
 
 

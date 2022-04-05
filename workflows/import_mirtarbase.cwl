@@ -13,12 +13,8 @@ inputs:
     type: File
     inputBinding:
       position: 2
-  mirtarbase_edgelist:
-    type: string
-    inputBinding:
-      position: 3
-outputs: []
-#  example_out: []
-#    type: File
-#    outputBinding:
-#      glob: stringdb_edges_path
+outputs:
+ example_out:
+   type: File
+   outputBinding:
+     glob: mirtarbase_edges
