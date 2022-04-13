@@ -1,6 +1,6 @@
 #!/usr/bin/env cwl-runner
 
-cwlVersion: v1.0
+cwlVersion: v1.2
 class: CommandLineTool
 baseCommand: Rscript
 
@@ -14,7 +14,7 @@ inputs:
     inputBinding:
       position: 2
 outputs:
- edges_out:
+ stringdb_edge_list:
    type: File
    outputBinding:
      glob: stringdb_edges
