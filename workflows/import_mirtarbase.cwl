@@ -23,7 +23,7 @@ inputs:
       position: 1
 
 outputs:
- example_out:
+ mirtarbase_edge_list:
    type: File
    outputBinding:
      glob: mirtarbase_edges
