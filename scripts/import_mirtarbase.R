@@ -6,10 +6,12 @@
 #' @export
 #'
 #' @examples
-import_mirtarbase <- function(infile, outfile, n_max = Inf){
+import_mirtarbase <- function(infile, n_max = Inf){
     #library(readxl)
     library(openxlsx)
     library(data.table)
+
+    outfile <- "mirtarbase_edges"
 
     # Format edges
     if (n_max == Inf){
@@ -26,4 +28,4 @@ import_mirtarbase <- function(infile, outfile, n_max = Inf){
 }
 
 args = commandArgs(trailingOnly=TRUE)
-import_mirtarbase(args[1], args[2])
+import_mirtarbase(args[1])

@@ -3,6 +3,10 @@
 cwlVersion: v1.0
 class: CommandLineTool
 
+hints:
+  DockerRequirement:
+    dockerPull: jdwijnbergen/multi-omics_asi
+
 requirements:
   InitialWorkDirRequirement:
     listing:
