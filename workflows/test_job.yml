@@ -1,12 +1,3 @@
-# Scripts
-import_stringdb_src:
-  class: File
-  path: ../scripts/import_stringdb.R
-
-import_mirtarbase_src:
-  class: File
-  path: ../scripts/import_mirtarbase.R
-
 # Input files
 stringdb_input_file:
   class: File
@@ -19,12 +10,11 @@ mirtarbase_input_file:
 # Parameters
 
 
-
-
-
 # Comments
-# "https://stringdb-static.org/download/protein.links.detailed.v11.0/9606.protein.links.detailed.v11.0.txt.gz"
-# "mirtarbase.cuhk.edu.cn/cache/download/8.0/hsa_MTI.xlsx"
+# STRING download:
+# https://stringdb-static.org/download/protein.links.detailed.v11.0/9606.protein.links.detailed.v11.0.txt.gz
+# miRTarBase Download:
+# mirtarbase.cuhk.edu.cn/cache/download/8.0/hsa_MTI.xlsx
 
 
 # stringdb_edges_path:

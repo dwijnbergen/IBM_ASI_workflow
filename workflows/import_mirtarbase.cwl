@@ -2,17 +2,22 @@
 
 cwlVersion: v1.0
 class: CommandLineTool
-baseCommand: Rscript
+
+requirements:
+  InitialWorkDirRequirement:
+    listing:
+    - entryname: import_mirtarbase.R
+      entry:
+        $include: ../scripts/import_mirtarbase.R
+
+baseCommand: ["Rscript", "import_mirtarbase.R"]
 
 inputs:
-  import_mirtarbase_src:
-    type: File
-    inputBinding:
-      position: 1
   mirtarbase_input_file:
     type: File
     inputBinding:
-      position: 2
+      position: 1
+
 outputs:
  example_out:
    type: File
