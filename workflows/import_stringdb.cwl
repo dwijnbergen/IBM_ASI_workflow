@@ -1,18 +1,23 @@
 #!/usr/bin/env cwl-runner
 
-cwlVersion: v1.2
+cwlVersion: v1.0
 class: CommandLineTool
-baseCommand: Rscript
+
+requirements:
+  InitialWorkDirRequirement:
+    listing:
+    - entryname: import_stringdb.R
+      entry:
+        $include: ../scripts/import_stringdb.R
+
+baseCommand: ["Rscript", "import_stringdb.R"]
 
 inputs:
-  import_stringdb_src:
-    type: File
-    inputBinding:
-      position: 1
   stringdb_input_file:
     type: File
     inputBinding:
-      position: 2
+      position: 1
+
 outputs:
  stringdb_edge_list:
    type: File

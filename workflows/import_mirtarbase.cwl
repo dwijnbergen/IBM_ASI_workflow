@@ -1,6 +1,6 @@
 #!/usr/bin/env cwl-runner
 
-cwlVersion: v1.2
+cwlVersion: v1.0
 class: CommandLineTool
 baseCommand: Rscript
 
