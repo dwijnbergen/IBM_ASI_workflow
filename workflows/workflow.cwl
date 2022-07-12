@@ -19,6 +19,9 @@ outputs:
     stringdb_edges:
         type: File
         outputSource: import_stringdb/stringdb_edge_list
+    stringdb_mapped_edges:
+        type: File
+        outputSource: map_stringdb/stringdb_mapped_edge_list
     mirtarbase_edges:
         type: File
         outputSource: import_mirtarbase/mirtarbase_edge_list
@@ -44,10 +47,10 @@ steps:
         out:
             [mirtarbase_edge_list]
 
-    # map_stringdb:
-    #     run: map_stringdb.cwl
-    #     in:
-    #         stringdb_edge_list: import_stringdb/stringdb_edge_list
-    #     out:
-    #         [stringdb_mapped_edge_list]
+    map_stringdb:
+        run: map_stringdb.cwl
+        in:
+            stringdb_edge_list: import_stringdb/stringdb_edge_list
+        out:
+            [stringdb_mapped_edge_list]
     

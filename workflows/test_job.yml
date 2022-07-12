@@ -12,6 +12,11 @@ stringdb_number_of_edges: 100
 stringdb_min_weight: 200
 mirtarbase_number_of_edges: 100
 
+# Temporary intermediate files for testing
+stringdb_edge_list:
+  class: File
+  path: /home/dwijnbergen/ASI_workflow_data/stringdb_edges
+
 # Comments
 # STRING download:
 # https://stringdb-static.org/download/protein.links.detailed.v11.0/9606.protein.links.detailed.v11.0.txt.gz
