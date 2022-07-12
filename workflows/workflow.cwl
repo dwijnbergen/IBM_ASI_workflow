@@ -6,6 +6,10 @@ class: Workflow
 inputs:
     stringdb_input_file:
         type: File
+    stringdb_number_of_edges:
+        type: int
+    stringdb_min_weight:
+        type: int
     mirtarbase_input_file:
         type: File
 
@@ -25,6 +29,8 @@ steps:
         run: import_stringdb.cwl
         in: 
             stringdb_input_file: stringdb_input_file
+            stringdb_number_of_edges: stringdb_number_of_edges
+            stringdb_min_weight: stringdb_min_weight
         out: 
             [stringdb_edge_list]
 
