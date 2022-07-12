@@ -23,5 +23,5 @@ import_stringdb <- function(infile, n_max = Inf, min_weight = 1){
   }
 }
 
-args = commandArgs(trailingOnly=TRUE)
-import_stringdb(args[1])
+args <- commandArgs(trailingOnly=TRUE)
+import_stringdb(args[1], n_max = args[2], min_weight = args[3])

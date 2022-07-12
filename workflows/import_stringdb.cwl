@@ -21,6 +21,14 @@ inputs:
     type: File
     inputBinding:
       position: 1
+  stringdb_number_of_edges:
+    type: int
+    inputBinding:
+      position: 2
+  stringdb_min_weight:
+    type: int
+    inputBinding:
+      position: 3
 
 outputs:
  stringdb_edge_list:
