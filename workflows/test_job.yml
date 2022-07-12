@@ -10,6 +10,7 @@ mirtarbase_input_file:
 # Parameters
 stringdb_number_of_edges: 100
 stringdb_min_weight: 200
+mirtarbase_number_of_edges: 100
 
 # Comments
 # STRING download:

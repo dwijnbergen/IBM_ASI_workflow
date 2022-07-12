@@ -12,6 +12,8 @@ inputs:
         type: int
     mirtarbase_input_file:
         type: File
+    mirtarbase_number_of_edges:
+        type: int
 
 outputs:
     stringdb_edges:
@@ -38,6 +40,7 @@ steps:
         run: import_mirtarbase.cwl
         in:
             mirtarbase_input_file: mirtarbase_input_file
+            mirtarbase_number_of_edges: mirtarbase_number_of_edges
         out:
             [mirtarbase_edge_list]
 

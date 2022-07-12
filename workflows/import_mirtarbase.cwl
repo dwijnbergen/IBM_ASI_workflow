@@ -21,6 +21,10 @@ inputs:
     type: File
     inputBinding:
       position: 1
+  mirtarbase_number_of_edges:
+    type: int
+    inputBinding:
+      position: 2
 
 outputs:
  mirtarbase_edge_list:

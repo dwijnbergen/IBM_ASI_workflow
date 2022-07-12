@@ -27,5 +27,5 @@ import_mirtarbase <- function(infile, n_max = Inf){
     fwrite(edges, outfile, quote=F, sep="\t")
 }
 
-args = commandArgs(trailingOnly=TRUE)
-import_mirtarbase(args[1])
+args <- commandArgs(trailingOnly=TRUE)
+import_mirtarbase(args[1], n_max = args[2])
