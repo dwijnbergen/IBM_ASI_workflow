@@ -14,20 +14,47 @@ inputs:
         type: File
     mirtarbase_number_of_edges:
         type: int
+    entrez2string:
+        type: File
+    bridgedb:
+        type: File
+    mRNA-mRNA_bicor:
+        type: File
+    miRNA-mRNA_bicor:
+        type: File
+    de_mRNA:
+        type: File
+    de_miRNA:
+        type: File
+    variant_burden:
+        type: File
+    mogamun_generations:
+        type: int
+    mogamun_runs:
+        type: int
+    mogamun_cores:
+        type: int
+    mogamun_merge_threshold:
+        type: int
 
 outputs:
-    stringdb_edges:
-        type: File
-        outputSource: import_stringdb/stringdb_edge_list
-    stringdb_mapped_edges:
-        type: File
-        outputSource: map_stringdb/stringdb_mapped_edge_list
-    mirtarbase_edges:
-        type: File
-        outputSource: import_mirtarbase/mirtarbase_edge_list
+    # stringdb_edges:
+    #     type: File
+    #     outputSource: import_stringdb/stringdb_edge_list
+    # mirtarbase_edges:
+    #     type: File
+    #     outputSource: import_mirtarbase/mirtarbase_edge_list
     # stringdb_mapped_edges:
     #     type: File
     #     outputSource: map_stringdb/stringdb_mapped_edge_list
+
+    full_graph:
+        type: File
+        outputSource: integrate_graph/full_graph
+    subnetworks:
+        type: File
+        outputSource: run_mogamun/subnetworks
+
 
 steps:
     import_stringdb:
@@ -51,6 +78,46 @@ steps:
         run: map_stringdb.cwl
         in:
             stringdb_edge_list: import_stringdb/stringdb_edge_list
+            entrez2string: entrez2string
+            bridgedb: bridgedb
         out:
             [stringdb_mapped_edge_list]
-    
+
+    map_mirtarbase:
+        run: map_mirtarbase.cwl
+        in:
+            bridgedb: bridgedb
+            mirtarbase_edge_list: import_mirtarbase/mirtarbase_edge_list
+        out:
+            [mirtarbase_mapped_edge_list]
+
+    integrate_graph:
+        run: integrate_graph.cwl
+        in:
+            stringdb_mapped_edge_list: map_stringdb/stringdb_mapped_edge_list
+            mirtarbase_mapped_edge_list: map_mirtarbase/mirtarbase_mapped_edge_list
+            mRNA-mRNA_bicor: mRNA-mRNA_bicor
+            miRNA-mRNA_bicor: miRNA-mRNA_bicor
+            de_mRNA: de_mRNA
+            de_miRNA: de_miRNA
+            variant_burden: variant_burden
+        out:
+            [full_graph]
+
+    igraph_to_mogamun:
+        run: igraph_to_mogamun.cwl
+        in:
+            full_graph: integrate_graph/full_graph
+        out:
+            [mogamun_input]
+
+    run_mogamun:
+        run: run_mogamun.cwl
+        in:
+            mogamun_input: igraph_to_mogamun/mogamun_input
+            mogamun_generations: mogamun_generations
+            mogamun_runs: mogamun_runs
+            mogamun_cores: mogamun_cores
+            mogamun_merge_threshold: mogamun_merge_threshold
+        out:
+            [subnetworks]

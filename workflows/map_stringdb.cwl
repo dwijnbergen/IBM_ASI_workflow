@@ -22,6 +22,14 @@ inputs:
     type: File
     inputBinding:
       position: 1
+  entrez2string:
+    type: File
+    inputBinding:
+      position: 2
+  bridgedb:
+    type: File
+    inputBinding:
+      position: 3
 
 outputs:
  stringdb_mapped_edge_list:

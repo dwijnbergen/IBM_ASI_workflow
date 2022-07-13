@@ -10,23 +10,21 @@ hints:
 requirements:
   InitialWorkDirRequirement:
     listing:
-    - entryname: map_stringdb.R
+    - entryname: igraph_to_mogamun.R
       entry:
-        $include: ../scripts/map_stringdb.R
-    - entryname: map_identifiers.R
-      entry:
-        $include: ../scripts/map_identifiers.R
+        $include: ../scripts/igraph_to_mogamun.R
 
-baseCommand: ["Rscript", "map_stringdb.R"]
+
+baseCommand: ["Rscript", "igraph_to_mogamun.R"]
 
 inputs:
-  stringdb_edge_list:
+  full_graph:
     type: File
     inputBinding:
       position: 1
 
 outputs:
- stringdb_mapped_edge_list:
+ mogamun_input:
    type: File
    outputBinding:
-     glob: stringdb_edges_mapped
+     glob: mogamun_input

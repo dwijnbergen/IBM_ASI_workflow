@@ -3,7 +3,7 @@ library(data.table)
 
 
 
-#source("map_identifiers.R")
+source("map_identifiers.R")
 
 
 # infile <- "stringdb_edges"
