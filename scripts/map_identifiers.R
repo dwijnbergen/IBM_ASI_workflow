@@ -4,14 +4,18 @@ library(BridgeDbR)
 library(miRBaseConverter)
 library(igraph)
 
-get_mapping_BridgeDB <- function(organism, from, to, identifiers){
-  
-  # Get database
-  dir.create("mapping/BridgeDB", showWarnings = FALSE)
-  location <- file.path("mapping/BridgeDB")
-  if (length(list.files(location)) == 0)
-    db_location <- getDatabase(organism = organism, location = location)
-  
+get_mapping_BridgeDB <- function(organism, from, to, identifiers, data_location){
+
+  # Get database if not specified as parameter
+  if (is.null(data_location)){
+    dir.create("mapping/BridgeDB", showWarnings = FALSE)
+    location <- file.path("mapping/BridgeDB")
+    if (length(list.files(location)) == 0)
+      db_location <- getDatabase(organism = organism, location = location)
+  } else {
+    location <- data_location
+  }
+
   # Get mapping file
   bridgedb_mapper <- loadDatabase(file.path(location, list.files(location)[[1]]))
   input <- data.frame(source = rep(from, length(identifiers)), identifier = identifiers)
@@ -21,27 +25,32 @@ get_mapping_BridgeDB <- function(organism, from, to, identifiers){
   return(mapping)
 }
 
-get_mapping_entrez2string <- function(organism){
+get_mapping_entrez2string <- function(organism, data_location){
   if (organism != "Homo sapiens")
     stop("get_mapping_STRINDB function is only implemented for Homo sapiens")
   
-  download_url <- "https://string-db.org/mapping_files/entrez/human.entrez_2_string.2018.tsv.gz"
-  location <- file.path("mapping/STRINGmapping")
-  zipped_file <- file.path(location, "entrez2string.gz")
-  unzipped_file <- file.path(location, "entrez2string")
-  
-  dir.create(location, showWarnings = FALSE)
-  
-  # Download mapping file
-  if (!file.exists(zipped_file)){
-    system(paste("wget", download_url, "-O", zipped_file))
+  # Get database if not specified as parameter
+  if (is.null(data_location)){
+    download_url <- "https://string-db.org/mapping_files/entrez/human.entrez_2_string.2018.tsv.gz"
+    location <- file.path("mapping/STRINGmapping")
+    zipped_file <- file.path(location, "entrez2string.gz")
+    unzipped_file <- file.path(location, "entrez2string")
+
+    dir.create(location, showWarnings = FALSE)
+
+    # Download mapping file
+    if (!file.exists(zipped_file)){
+      system(paste("wget", download_url, "-O", zipped_file))
+    }
+
+    # Unzip data
+    if (!file.exists(unzipped_file)){
+      system(paste("gunzip -k", zipped_file))
+    }
+  } else {
+    unzipped_file <- data_location
   }
-  
-  # Unzip data
-  if (!file.exists(unzipped_file)){
-    system(paste("gunzip -k", zipped_file))
-  }
-  
+
   # Read mapping table
   mapping <- fread(unzipped_file, sep = "\t")
   colnames(mapping) <- c("NCBI taxid", "entrez", "STRING")
@@ -64,7 +73,7 @@ get_mapping_miRBaseConverter <- function(from, to, identifiers) {
   return(mapping)
 }
 
-get_mapping <- function(service, organism = "Homo sapiens", from = NULL , to = NULL, identifiers = NULL){
+get_mapping <- function(service, organism = "Homo sapiens", from = NULL , to = NULL, identifiers = NULL, data_location = NULL){
   # Create directory for mapping and database files
   dir.create("mapping", showWarnings = FALSE)
   
@@ -72,10 +81,10 @@ get_mapping <- function(service, organism = "Homo sapiens", from = NULL , to = N
   
   # Run the appropriate service to get mapping
   if (service == "BridgeDB"){
-    mapping <- get_mapping_BridgeDB(organism, from, to, identifiers)
+    mapping <- get_mapping_BridgeDB(organism, from, to, identifiers, data_location)
   } 
   else if (service == "entrez2string"){
-    mapping <- get_mapping_entrez2string(organism)
+    mapping <- get_mapping_entrez2string(organism, data_location)
   }
   else if (service == "miRBaseConverter"){
     mapping <- get_mapping_miRBaseConverter(from, to, identifiers)

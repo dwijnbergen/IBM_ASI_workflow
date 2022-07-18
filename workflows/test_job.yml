@@ -7,10 +7,19 @@ mirtarbase_input_file:
   class: File
   path: /home/dwijnbergen/ASI_workflow_data/input/hsa_MTI.xlsx
 
+entrez2string:
+  class: File
+  path: /home/dwijnbergen/ASI_workflow_data/input/mapping/STRINGmapping/entrez2string
+
+bridgedb:
+  class: Directory
+  path: /home/dwijnbergen/ASI_workflow_data/input/mapping/BridgeDB
+
 # Parameters
 stringdb_number_of_edges: 100
 stringdb_min_weight: 200
 mirtarbase_number_of_edges: 100
+mogamun_cores: 1
 
 # Temporary intermediate files for testing
 stringdb_edge_list:

@@ -7,15 +7,17 @@ hints:
   DockerRequirement:
     dockerPull: jdwijnbergen/multi-omics_asi
 
-# requirements:
-#   InitialWorkDirRequirement:
-#     listing:
-#     - entryname: map_stringdb.R
-#       entry:
-#         $include: ../scripts/import_stringdb.R
+requirements:
+  InitialWorkDirRequirement:
+    listing:
+    - entryname: map_stringdb.R
+      entry:
+        $include: ../scripts/map_stringdb.R
+    - entryname: map_identifiers.R
+      entry:
+        $include: ../scripts/map_identifiers.R
 
-# baseCommand: ["Rscript", "import_stringdb.R"]
-# baseCommand: Rscript
+baseCommand: ["Rscript", "map_stringdb.R"]
 
 inputs:
   stringdb_edge_list:
@@ -27,7 +29,7 @@ inputs:
     inputBinding:
       position: 2
   bridgedb:
-    type: File
+    type: Directory
     inputBinding:
       position: 3
 
@@ -35,4 +37,4 @@ outputs:
  stringdb_mapped_edge_list:
    type: File
    outputBinding:
-     glob: stringdb_mapped
+     glob: stringdb_edges_mapped

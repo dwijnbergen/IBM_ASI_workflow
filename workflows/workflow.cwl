@@ -38,23 +38,12 @@ inputs:
         type: int
 
 outputs:
-    # stringdb_edges:
-    #     type: File
-    #     outputSource: import_stringdb/stringdb_edge_list
-    # mirtarbase_edges:
-    #     type: File
-    #     outputSource: import_mirtarbase/mirtarbase_edge_list
-    # stringdb_mapped_edges:
-    #     type: File
-    #     outputSource: map_stringdb/stringdb_mapped_edge_list
-
     full_graph:
         type: File
         outputSource: integrate_graph/full_graph
     subnetworks:
         type: File
         outputSource: run_mogamun/subnetworks
-
 
 steps:
     import_stringdb:
