@@ -13,6 +13,12 @@ requirements:
     - entryname: integrate_graph.R
       entry:
         $include: ../scripts/integrate_graph.R
+    - entryname: map_identifiers.R
+      entry:
+        $include: ../scripts/util/map_identifiers.R
+    - entryname: load_omics_data.R
+      entry:
+        $include: ../scripts/util/load_omics_data.R
 
 baseCommand: ["Rscript", "integrate_graph.R"]
 
@@ -45,9 +51,13 @@ inputs:
     type: File
     inputBinding:
       position: 7
+  bridgedb:
+    type: Directory
+    inputBinding:
+      position: 8
 
 outputs:
  full_graph:
    type: File
    outputBinding:
-     glob: full_graph.igraph
+     glob: full_graph.graphml

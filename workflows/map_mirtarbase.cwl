@@ -15,7 +15,7 @@ requirements:
         $include: ../scripts/map_mirtarbase.R
     - entryname: map_identifiers.R
       entry:
-        $include: ../scripts/map_identifiers.R
+        $include: ../scripts/util/map_identifiers.R
 
 baseCommand: ["Rscript", "map_mirtarbase.R"]
 

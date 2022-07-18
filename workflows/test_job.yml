@@ -15,11 +15,35 @@ bridgedb:
   class: Directory
   path: /home/dwijnbergen/ASI_workflow_data/input/mapping/BridgeDB
 
+mRNA-mRNA_bicor:
+  class: File
+  path: /home/dwijnbergen/ASI_workflow_data/input/sIBM/mRNA-cor_edges_bicor
+
+miRNA-mRNA_bicor:
+  class: File
+  path: /home/dwijnbergen/ASI_workflow_data/input/sIBM/mRNA-miRNA_cor_edges_bicor
+
+de_mRNA:
+  class: File
+  path: /home/dwijnbergen/ASI_workflow_data/input/sIBM/res_sIBM_AMP_main_updated.txt
+
+de_miRNA:
+  class: File
+  path: /home/dwijnbergen/ASI_workflow_data/input/sIBM/res_sIBM_AMP_mirna_updated.txt
+
+variant_burden:
+  class: File
+  path: /home/dwijnbergen/ASI_workflow_data/input/sIBM/rvtest_IBM_1000GFIN.Skat.assoc
+
 # Parameters
 stringdb_number_of_edges: 100
 stringdb_min_weight: 200
 mirtarbase_number_of_edges: 100
+
+mogamun_generations: 1
+mogamun_runs: 1
 mogamun_cores: 1
+mogamun_merge_threshold: 0.3
 
 # Temporary intermediate files for testing
 stringdb_edge_list:
@@ -29,6 +53,14 @@ stringdb_edge_list:
 mirtarbase_edge_list:
   class: File
   path: /home/dwijnbergen/ASI_workflow_data/mirtarbase_edges
+
+stringdb_mapped_edge_list:
+  class: File
+  path: /home/dwijnbergen/ASI_workflow_data/stringdb_edges_mapped
+
+mirtarbase_mapped_edge_list:
+  class: File
+  path: /home/dwijnbergen/ASI_workflow_data/mirtarbase_edges_mapped
 
 # Comments
 # STRING download:
