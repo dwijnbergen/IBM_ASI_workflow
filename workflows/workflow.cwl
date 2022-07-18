@@ -6,14 +6,8 @@ class: Workflow
 inputs:
     stringdb_input_file:
         type: File
-    stringdb_number_of_edges:
-        type: int
-    stringdb_min_weight:
-        type: int
     mirtarbase_input_file:
         type: File
-    mirtarbase_number_of_edges:
-        type: int
     entrez2string:
         type: File
     bridgedb:
@@ -28,6 +22,15 @@ inputs:
         type: File
     variant_burden:
         type: File
+
+    stringdb_number_of_edges:
+        type: int
+    stringdb_min_weight:
+        type: int
+    mirtarbase_number_of_edges:
+        type: int
+    max_cor_edges:
+        type: int
     mogamun_generations:
         type: int
     mogamun_runs:
@@ -90,6 +93,8 @@ steps:
             de_mRNA: de_mRNA
             de_miRNA: de_miRNA
             variant_burden: variant_burden
+            bridgedb: bridgedb
+            max_cor_edges: max_cor_edges
         out:
             [full_graph]
 

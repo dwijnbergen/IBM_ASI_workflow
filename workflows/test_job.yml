@@ -40,6 +40,8 @@ stringdb_number_of_edges: 100
 stringdb_min_weight: 200
 mirtarbase_number_of_edges: 100
 
+max_cor_edges: 100
+
 mogamun_generations: 1
 mogamun_runs: 1
 mogamun_cores: 1
@@ -61,6 +63,10 @@ stringdb_mapped_edge_list:
 mirtarbase_mapped_edge_list:
   class: File
   path: /home/dwijnbergen/ASI_workflow_data/mirtarbase_edges_mapped
+
+full_graph:
+  class: File
+  path: /home/dwijnbergen/ASI_workflow_data/full_graph.graphml
 
 # Comments
 # STRING download:

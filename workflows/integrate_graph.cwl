@@ -55,6 +55,10 @@ inputs:
     type: Directory
     inputBinding:
       position: 8
+  max_cor_edges:
+    type: int
+    inputBinding:
+      position: 9
 
 outputs:
  full_graph:

@@ -7,7 +7,7 @@ source("map_identifiers.R")
 source("load_omics_data.R")
 
 
-integrate_graph <- function(stringdb_file, mirtarbase_file, mrna_cor_file, mirna_cor_file, mrna_de_file, miRNA_de_file, variant_burden_file, bridgedb_location){
+integrate_graph <- function(stringdb_file, mirtarbase_file, mrna_cor_file, mirna_cor_file, mrna_de_file, miRNA_de_file, variant_burden_file, bridgedb_location, cor_n_max){
     # Load Pvalues and fold changes
     main_pvals <- load_main_pvals(mrna_de_file) # columns are gene, PValue and logFC
     main_pvals$omics <- "mRNA"
@@ -40,11 +40,11 @@ integrate_graph <- function(stringdb_file, mirtarbase_file, mrna_cor_file, mirna
     mirtarbase_edges <- fread(mirtarbase_file, sep="\t")
     mirtarbase_edges$source <- "miRTarBase"
 
-    cor_mRNA_edges <- fread(mrna_cor_file, sep="\t")
+    cor_mRNA_edges <- fread(mrna_cor_file, sep="\t", nrows = cor_n_max)
     cor_mRNA_edges$source <- "cor_mRNA"
     colnames(cor_mRNA_edges)[3] <- "Weight"
 
-    cor_miRNA_edges <- fread(mirna_cor_file, sep = "\t")
+    cor_miRNA_edges <- fread(mirna_cor_file, sep = "\t", nrows = cor_n_max)
     cor_miRNA_edges$source <- "cor_miRNA"
     colnames(cor_miRNA_edges)[3] <- "Weight"
 
@@ -104,4 +104,4 @@ integrate_graph <- function(stringdb_file, mirtarbase_file, mrna_cor_file, mirna
 }
 
 args <- commandArgs(trailingOnly=TRUE)
-integrate_graph(args[1], args[2], args[3], args[4], args[5], args[6], args[7], args[8])
+integrate_graph(args[1], args[2], args[3], args[4], args[5], args[6], args[7], args[8], as.integer(args[9]))
