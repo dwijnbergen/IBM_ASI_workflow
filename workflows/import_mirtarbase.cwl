@@ -31,3 +31,4 @@ outputs:
    type: File
    outputBinding:
      glob: mirtarbase_edges
+     

@@ -14,7 +14,7 @@ source("map_identifiers.R")
 #' @export
 #'
 #' @examples
-map_stringdb <- function(infile, entrez2gene_location, STRINGmapping_location){
+map_stringdb <- function(infile, entrez2gene_location, bridgedb_location){
     outfile <- "stringdb_edges_mapped"
 
     # Read original edges
@@ -25,12 +25,12 @@ map_stringdb <- function(infile, entrez2gene_location, STRINGmapping_location){
         organism = "Homo sapiens", data_location = entrez2gene_location)
     edges <- apply_mapping_edge_list(mapping, edges, column = 1)
     edges <- apply_mapping_edge_list(mapping, edges, column = 2)
-    input_identifiers <- union(unlist(edges[,1]), unlist(edges[,2]))
 
     # Map with BridgeDB
+    input_identifiers <- union(unlist(edges[,1]), unlist(edges[,2]))
     mapping <- get_mapping("BridgeDB", organism = "Homo sapiens",
         from = "L", to = "En", identifiers = input_identifiers,
-        data_location = STRINGmapping_location)
+        data_location = bridgedb_location)
     edges <- apply_mapping_edge_list(mapping, edges, column = 1)
     edges <- apply_mapping_edge_list(mapping, edges, column = 2)
 

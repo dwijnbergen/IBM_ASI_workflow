@@ -25,7 +25,7 @@ inputs:
     inputBinding:
       position: 1
   bridgedb:
-    type: File
+    type: Directory
     inputBinding:
       position: 2
 
@@ -33,4 +33,4 @@ outputs:
  mirtarbase_mapped_edge_list:
    type: File
    outputBinding:
-     glob: stringdb_edges_mapped
+     glob: mirtarbase_edges_mapped

@@ -26,13 +26,12 @@ stringdb_edge_list:
   class: File
   path: /home/dwijnbergen/ASI_workflow_data/stringdb_edges
 
+mirtarbase_edge_list:
+  class: File
+  path: /home/dwijnbergen/ASI_workflow_data/mirtarbase_edges
+
 # Comments
 # STRING download:
-# https://stringdb-static.org/download/protein.links.detailed.v11.0/9606.protein.links.detailed.v11.0.txt.gz
+#   https://stringdb-static.org/download/protein.links.detailed.v11.0/9606.protein.links.detailed.v11.0.txt.gz
 # miRTarBase Download:
-# mirtarbase.cuhk.edu.cn/cache/download/8.0/hsa_MTI.xlsx
-
-
-# stringdb_edges_path:
-#   class: File
-#   path: /home/dwijnbergen/ASI_workflow_data/input/stringdb_edges
+#   mirtarbase.cuhk.edu.cn/cache/download/8.0/hsa_MTI.xlsx

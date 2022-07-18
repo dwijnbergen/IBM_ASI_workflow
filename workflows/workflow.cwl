@@ -17,7 +17,7 @@ inputs:
     entrez2string:
         type: File
     bridgedb:
-        type: File
+        type: Directory
     mRNA-mRNA_bicor:
         type: File
     miRNA-mRNA_bicor:
