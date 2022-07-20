@@ -49,7 +49,7 @@ outputs:
         type: File
         outputSource: integrate_graph/full_graph
     subnetworks:
-        type: File
+        type: Directory
         outputSource: postprocess_mogamun/subnetworks
 
 steps:
@@ -127,3 +127,5 @@ steps:
             mogamun_min_size: mogamun_min_size
             mogamun_max_size: mogamun_max_size
             mogamun_merge_threshold: mogamun_merge_threshold
+        out:
+            [subnetworks]

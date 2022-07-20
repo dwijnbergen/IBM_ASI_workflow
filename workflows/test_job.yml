@@ -50,38 +50,38 @@ mogamun_min_size: 15
 mogamun_max_size: 200
 mogamun_merge_threshold: 20
 
-# Temporary intermediate files for testing
-stringdb_edge_list:
-  class: File
-  path: /home/dwijnbergen/ASI_workflow_data/stringdb_edges
+# # Temporary intermediate files for testing
+# stringdb_edge_list:
+#   class: File
+#   path: /home/dwijnbergen/ASI_workflow_data/stringdb_edges
 
-mirtarbase_edge_list:
-  class: File
-  path: /home/dwijnbergen/ASI_workflow_data/mirtarbase_edges
+# mirtarbase_edge_list:
+#   class: File
+#   path: /home/dwijnbergen/ASI_workflow_data/mirtarbase_edges
 
-stringdb_mapped_edge_list:
-  class: File
-  path: /home/dwijnbergen/ASI_workflow_data/stringdb_edges_mapped
+# stringdb_mapped_edge_list:
+#   class: File
+#   path: /home/dwijnbergen/ASI_workflow_data/stringdb_edges_mapped
 
-mirtarbase_mapped_edge_list:
-  class: File
-  path: /home/dwijnbergen/ASI_workflow_data/mirtarbase_edges_mapped
+# mirtarbase_mapped_edge_list:
+#   class: File
+#   path: /home/dwijnbergen/ASI_workflow_data/mirtarbase_edges_mapped
 
-full_graph:
-  class: File
-  path: /home/dwijnbergen/ASI_workflow_data/full_graph.graphml
+# full_graph:
+#   class: File
+#   path: /home/dwijnbergen/ASI_workflow_data/full_graph.graphml
 
-full_graph_rds:
-  class: File
-  path: /home/dwijnbergen/ASI_workflow_data/full_graph.rds
+# full_graph_rds:
+#   class: File
+#   path: /home/dwijnbergen/ASI_workflow_data/full_graph.rds
 
-mogamun_input:
-  class: Directory
-  path: /home/dwijnbergen/ASI_workflow_data/MOGAMUN_input
+# mogamun_input:
+#   class: Directory
+#   path: /home/dwijnbergen/ASI_workflow_data/MOGAMUN_input
 
-mogamun_results:
-  class: Directory
-  path: /home/dwijnbergen/ASI_workflow_data/MOGAMUN_results
+# mogamun_results:
+#   class: Directory
+#   path: /home/dwijnbergen/ASI_workflow_data/MOGAMUN_results
 
 # Comments
 # STRING download:
