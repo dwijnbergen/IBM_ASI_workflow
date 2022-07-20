@@ -96,12 +96,12 @@ steps:
             bridgedb: bridgedb
             max_cor_edges: max_cor_edges
         out:
-            [full_graph]
+            [full_graph, full_graph_rds]
 
     igraph_to_mogamun:
         run: igraph_to_mogamun.cwl
         in:
-            full_graph: integrate_graph/full_graph
+            full_graph_rds: integrate_graph/full_graph_rds
         out:
             [mogamun_input]
 

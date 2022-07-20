@@ -13,18 +13,20 @@ requirements:
     - entryname: igraph_to_mogamun.R
       entry:
         $include: ../scripts/igraph_to_mogamun.R
-
+    - entryname: prepare_mogamun.R
+      entry:
+        $include: ../scripts/util/prepare_mogamun.R
 
 baseCommand: ["Rscript", "igraph_to_mogamun.R"]
 
 inputs:
-  full_graph:
+  full_graph_rds:
     type: File
     inputBinding:
       position: 1
 
 outputs:
  mogamun_input:
-   type: File
+   type: Directory
    outputBinding:
-     glob: mogamun_input
+     glob: MOGAMUN

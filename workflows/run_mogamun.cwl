@@ -18,7 +18,7 @@ baseCommand: ["Rscript", "run_mogamun.R"]
 
 inputs:
   mogamun_input:
-    type: File
+    type: Directory
     inputBinding:
       position: 1
   mogamun_generations:

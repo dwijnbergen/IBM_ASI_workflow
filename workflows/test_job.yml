@@ -68,6 +68,10 @@ full_graph:
   class: File
   path: /home/dwijnbergen/ASI_workflow_data/full_graph.graphml
 
+full_graph_rds:
+  class: File
+  path: /home/dwijnbergen/ASI_workflow_data/full_graph.rds
+
 # Comments
 # STRING download:
 #   https://stringdb-static.org/download/protein.links.detailed.v11.0/9606.protein.links.detailed.v11.0.txt.gz
