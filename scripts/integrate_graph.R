@@ -101,6 +101,7 @@ integrate_graph <- function(stringdb_file, mirtarbase_file, mrna_cor_file, mirna
     }
 
     write_graph(g, "full_graph.graphml", format = "graphml")
+    saveRDS(g, file = "full_graph.rds")
 }
 
 args <- commandArgs(trailingOnly=TRUE)

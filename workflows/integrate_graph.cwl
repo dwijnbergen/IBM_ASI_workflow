@@ -61,7 +61,11 @@ inputs:
       position: 9
 
 outputs:
- full_graph:
-   type: File
-   outputBinding:
-     glob: full_graph.graphml
+  full_graph:
+    type: File
+    outputBinding:
+      glob: full_graph.graphml
+  full_graph_rds:
+    type: File
+    outputBinding:
+      glob: full_graph.rds
