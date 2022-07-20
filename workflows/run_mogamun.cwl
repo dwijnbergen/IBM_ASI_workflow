@@ -33,13 +33,9 @@ inputs:
     type: int
     inputBinding:
       position: 4
-  mogamun_merge_threshold:
-    type: int
-    inputBinding:
-      position: 5
 
 outputs:
- subnetworks:
-   type: File
+ mogamun_results:
+   type: Directory
    outputBinding:
-     glob: subnetworks
+     glob: MOGAMUN_results

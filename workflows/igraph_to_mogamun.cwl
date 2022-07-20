@@ -29,4 +29,4 @@ outputs:
  mogamun_input:
    type: Directory
    outputBinding:
-     glob: MOGAMUN
+     glob: MOGAMUN_input

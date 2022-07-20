@@ -37,6 +37,10 @@ inputs:
         type: int
     mogamun_cores:
         type: int
+    mogamun_min_size:
+        type: int
+    mogamun_max_size:
+        type: int
     mogamun_merge_threshold:
         type: int
 
@@ -46,7 +50,7 @@ outputs:
         outputSource: integrate_graph/full_graph
     subnetworks:
         type: File
-        outputSource: run_mogamun/subnetworks
+        outputSource: postprocess_mogamun/subnetworks
 
 steps:
     import_stringdb:
@@ -112,6 +116,14 @@ steps:
             mogamun_generations: mogamun_generations
             mogamun_runs: mogamun_runs
             mogamun_cores: mogamun_cores
-            mogamun_merge_threshold: mogamun_merge_threshold
         out:
-            [subnetworks]
+            [mogamun_results]
+    
+    postprocess_mogamun:
+        run: postprocess_mogamun.cwl
+        in:
+            mogamun_input: igraph_to_mogamun/mogamun_input
+            mogamun_results: run_mogamun/mogamun_results
+            mogamun_min_size: mogamun_min_size
+            mogamun_max_size: mogamun_max_size
+            mogamun_merge_threshold: mogamun_merge_threshold
