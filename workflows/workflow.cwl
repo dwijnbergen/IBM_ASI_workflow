@@ -116,7 +116,7 @@ steps:
         out: 
             [stringdb_edge_list]
         label: Import STRING
-        doc: Imports STRING database
+        doc: Imports STRING database file
 
     import_mirtarbase:
         run: import_mirtarbase.cwl
@@ -125,6 +125,8 @@ steps:
             mirtarbase_number_of_edges: mirtarbase_number_of_edges
         out:
             [mirtarbase_edge_list]
+        label: Import miRTarBase
+        doc: Imports miRTarBase database file
 
     map_stringdb:
         run: map_stringdb.cwl
@@ -134,6 +136,8 @@ steps:
             bridgedb: bridgedb
         out:
             [stringdb_mapped_edge_list]
+        label: Map STRING
+        doc: Maps STRING identifiers to identifiers consistent with datasets
 
     map_mirtarbase:
         run: map_mirtarbase.cwl
@@ -142,6 +146,8 @@ steps:
             mirtarbase_edge_list: import_mirtarbase/mirtarbase_edge_list
         out:
             [mirtarbase_mapped_edge_list]
+        label: Map miRTarBase
+        doc: Maps miRTarBase identifiers to identifiers consistent with datasets
 
     integrate_graph:
         run: integrate_graph.cwl
@@ -157,6 +163,8 @@ steps:
             max_cor_edges: max_cor_edges
         out:
             [full_graph, full_graph_rds]
+        label: Integrate network
+        doc: Integrates all datasources into a single disease network
 
     igraph_to_mogamun:
         run: igraph_to_mogamun.cwl
@@ -164,6 +172,8 @@ steps:
             full_graph_rds: integrate_graph/full_graph_rds
         out:
             [mogamun_input]
+        label: Convert igraph to MOGAMUN
+        doc: Converts the igraph network format to the MOGAMUN input format
 
     run_mogamun:
         run: run_mogamun.cwl
@@ -174,6 +184,8 @@ steps:
             mogamun_cores: mogamun_cores
         out:
             [mogamun_results]
+        label: Run MOGAMUN
+        doc: runs the MOGAMUN software with selected paramters
     
     postprocess_mogamun:
         run: postprocess_mogamun.cwl
@@ -185,6 +197,8 @@ steps:
             mogamun_merge_threshold: mogamun_merge_threshold
         out:
             [subnetworks]
+        label: Postprocess MOGAMUN
+        doc: processes output from MOGAMUN, and merges overlapping subnetwork
 
 s:author:
   - class: s:Person
