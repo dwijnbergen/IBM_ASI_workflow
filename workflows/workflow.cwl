@@ -98,9 +98,13 @@ outputs:
     full_graph:
         type: File
         outputSource: integrate_graph/full_graph
+        label: Full network
+        doc: The full disease network, which combines all data sources
     subnetworks:
         type: Directory
         outputSource: postprocess_mogamun/subnetworks
+        label: Subnetworks
+        doc: Folder with the resulting subnetworks and generation statistics
 
 steps:
     import_stringdb:
@@ -111,6 +115,8 @@ steps:
             stringdb_min_weight: stringdb_min_weight
         out: 
             [stringdb_edge_list]
+        label: Import STRING
+        doc: Imports STRING database
 
     import_mirtarbase:
         run: import_mirtarbase.cwl
