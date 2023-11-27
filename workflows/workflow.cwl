@@ -55,34 +55,44 @@ inputs:
 
     stringdb_number_of_edges:
         type: int
-        label: The number of STRING edges to use, USE FOR TESTING ONLY
+        label: STRING limit
+        doc: The number of STRING edges to use, USE FOR TESTING ONLY
     stringdb_min_weight:
         type: int
-        label: The minimum score for a STRING edge to be included in the analysis
+        label: STRING filter
+        doc: The minimum score for a STRING edge to be included in the analysis
     mirtarbase_number_of_edges:
         type: int
-        label: The number of miRTarBase edges to use, USE FOR TESTING ONLY
+        label: miRTarBase limit
+        doc: The number of miRTarBase edges to use, USE FOR TESTING ONLY
     max_cor_edges:
         type: int
-        label: The number of correlation edges to use, USE FOR TESTING ONLY
+        label: Correlation limit
+        doc: The number of correlation edges to use, USE FOR TESTING ONLY
     mogamun_generations:
         type: int
-        label: The number of generation to let the genetic algorithm in MOGAMUN evolve
+        label: MOGAMUN generations
+        doc: The number of generation to let the genetic algorithm in MOGAMUN evolve
     mogamun_runs:
         type: int
-        label: The number of parallel runs to let MOGAMUN do, these parallel runs are combined in postprocessing
+        label: MOGAMUN runs
+        doc: The number of parallel runs to let MOGAMUN do, these parallel runs are combined in postprocessing
     mogamun_cores:
         type: int
-        label: The number of cores to let MOGAMUN use
+        label: MOGAMUN cores
+        doc: The number of cores to let MOGAMUN use
     mogamun_min_size:
         type: int
-        label: The minimum size of subnetworks during postprocessing
+        label: Minimum subnetwork size
+        doc: The minimum size of subnetworks during postprocessing
     mogamun_max_size:
         type: int
-        label: The maximum size of subnetworks during postprocessing
+        label: Maximum subnetwork size
+        doc: The maximum size of subnetworks during postprocessing
     mogamun_merge_threshold:
         type: int
-        label: the minimum Jaccard Index overlap between two subnetworks to allow them to be merged
+        label: Subnetwork merge threshold
+        doc: the minimum Jaccard Index overlap between two subnetworks to allow them to be merged
 
 outputs:
     full_graph:
