@@ -3,34 +3,55 @@
 cwlVersion: v1.0
 class: Workflow
 
+# TODO: add more format with https://www.ebi.ac.uk/ols/ontologies/edam/terms?iri=http%3A%2F%2Fedamontology.org%2Fformat_3752&lang=en&viewMode=All&siblings=false
 inputs:
     stringdb_input_file:
         type: File
-        label: Table with Protein - protein interaction data as downloaded from STRING
+        label: STRING data
+        doc: Table with Protein - protein interaction data as downloaded from STRING
+        format: edam:data_0906 # Protein interaction data
+        format: ino:INO_0000311 # Protein-protein interaction
     mirtarbase_input_file:
         type: File
-        label: Table with miRNA - mRNA target data as downloaded from miRTarBase
+        label: miRTarBase data 
+        doc: Table with miRNA - mRNA target data as downloaded from
+        format: ino:INO_0000235 #one-way interaction
     entrez2string:
         type: File
-        label: Table with entrez mappings from STRING protein idenfitiers as downloaded from STRING
+        label: STRING identifier mapping
+        doc: Table with entrez mappings from STRING protein idenfitiers as downloaded from STRING
+        format: edam:topic_3345 # Data identity and mapping
     bridgedb:
         type: Directory
-        label: Directory with cached BridgeDB data
+        label: BridgeDB cache
+        doc: directory with cached BridgeDB data
+        format: edam:topic_3345 # Data identity and mapping
     mRNA-mRNA_bicor:
         type: File
-        label: Tab separated edge list with Ensembl gene ID's in the first two columns, and their bi-weight midcorrelation as defined by Langelder et al. in the third column
+        label: mRNA expression correlation
+        doc: Tab separated edge list with Ensembl gene ID's in the first two columns, and their bi-weight midcorrelation as defined by Langelder et al. in the third column
+        format: ino:INO_0000231 # co-expression
+        format: edam:format_3475 # TSV
     miRNA-mRNA_bicor:
         type: File
-        label: Tab separated edge list with Ensembl gene ID's in the first column, miRBase ID's in the second column. and their bi-weight midcorrelation as defined by Langelder et al. in the third column
+        label: miRNA mRNA correlation
+        doc: Tab separated edge list with Ensembl gene ID's in the first column, miRBase ID's in the second column. and their bi-weight midcorrelation as defined by Langelder et al. in the third column
+        format: ino:INO_0000231 # co-expression
+        format: edam:format_3475 # TSV
     de_mRNA:
         type: File
-        label: Output of differential mRNA expression testing from DESeq2, with Ensembl gene ID's concatened with gene symbols with ";" inbetween in the first column
+        label: Differential gene expression
+        doc: Output of differential mRNA expression testing from DESeq2, with Ensembl gene ID's concatened with gene symbols with ";" inbetween in the first column
+        format: edam:operation_3223 # Differential gene expression profiling
     de_miRNA:
         type: File
-        label: Output of differential miRNA expression testing from DESeq2, with miRBase ID's in the first column
+        label: Differential miRNA expression
+        doc: Output of differential miRNA expression testing from DESeq2, with miRBase ID's in the first column
+        format: edam:operation_3223 # Differential gene expression profiling
     variant_burden:
         type: File
-        label: Output of variant burden testing using SKAT in the rvtests package, with HGNC symbols in the first column
+        label: Variant Burden
+        doc: Output of variant burden testing using SKAT in the rvtests package, with HGNC symbols in the first column
 
     stringdb_number_of_edges:
         type: int
@@ -162,7 +183,9 @@ s:codeRepository: https://github.com/jdwijnbergen/IBM_ASI_workflow
 $namespaces:
  s: https://schema.org/
  edam: http://edamontology.org/
+ ino: http://purl.obolibrary.org/obo/
 
 $schemas:
  - https://schema.org/version/latest/schemaorg-current-http.rdf
  - http://edamontology.org/EDAM_1.18.owl
+ - http://purl.obolibrary.org/obo/ino.owl
