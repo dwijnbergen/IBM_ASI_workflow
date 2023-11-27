@@ -5,4 +5,6 @@ Workflow for Creating a large disease network from various datasets and database
 ## Links
 [WorkflowHub](https://workflowhub.eu/workflows/681)
 
-[R environment](https://doi.org/10.5281/zenodo.10210364)
+[Docker Image](https://hub.docker.com/R/jdwijnbergen/multi-omics_asi)
+
+[Docker Image build requirements](https://doi.org/10.5281/zenodo.10210364)
