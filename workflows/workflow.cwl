@@ -24,7 +24,7 @@ inputs:
     bridgedb:
         type: Directory
         label: BridgeDB cache
-        doc: directory for cached BridgeDB data
+        doc: directory to place and/or obtain cached BridgeDB data
         format: edam:topic_3345 # Data identity and mapping
     mRNA-mRNA_bicor:
         type: File
