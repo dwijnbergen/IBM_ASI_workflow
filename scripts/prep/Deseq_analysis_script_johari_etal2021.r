@@ -1,3 +1,8 @@
+/* Copyright (C) 2024 Mridul Johari - All Rights Reserved
+ * You may use, distribute and modify this code under the
+ * terms of the MIT license.
+ */
+
 # Pacman for efficient package management
 if (!require(pacman)) install.packages("pacman")
 pacman::p_load(DESeq2, RColorBrewer, gridExtra,
